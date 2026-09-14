@@ -3,7 +3,10 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
+const { StatusCodes, ReasonPhrases } = require("http-status-codes");
 
+const db = require("./config/database.js");
+const authRoutes = require("./routes/auth-routes.js");
 const app = express();
 
 // ============================================================
@@ -166,6 +169,26 @@ app.get('/api/health', (req, res) => {
 
 });
 
+app.get("/api/health/db", async (req, res) => {
+  try {
+    const [result] = await db.query("SELECT 1 AS connected");
+
+    res.status(StatusCodes.OK).json({
+      success: true,
+      database: "online",
+      result,
+    });
+  } catch (error) {
+    console.error("Database error:", error);
+
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      database: "offline",
+      error: error.message || ReasonPhrases.INTERNAL_SERVER_ERROR,
+    });
+  }
+});
+app.use("/api", authRoutes);
 // ============================================================
 // HOME PAGE
 // ============================================================
