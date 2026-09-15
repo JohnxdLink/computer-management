@@ -1,0 +1,14 @@
+@import url("../component/inputs/base.css");
+
+body {
+  background: linear-gradient(135deg, #0f1b2e 0%, #173b6c 50%, #1a5ba8 100%);
+}
+
+.input__login {
+  color: var(--color-warning);
+  border: 1px solid var(--color-light-gray);
+}
+
+.input__checkbox {
+  color: var(--color-secondary);
+}

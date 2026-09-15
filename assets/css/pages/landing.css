@@ -1,26 +1,30 @@
-/* Import all CSS framework files from base folder */
-
-@import url("../base/reset.css");
-@import url("../base/theme.css");
-@import url("../base/display.css");
-@import url("../base/flex.css");
-@import url("../base/gap.css");
-@import url("../base/margin.css");
-@import url("../base/padding.css");
-@import url("../base/width.css");
-@import url("../base/height.css");
-@import url("../base/colors.css");
-@import url("../base/text.css");
-@import url("../base/border.css");
-@import url("../base/radius.css");
-@import url("../base/shadow.css");
-@import url("../base/opacity.css");
-@import url("../base/overflow.css");
-@import url("../base/position.css");
-@import url("../base/z-index.css");
-
-/* Container */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+a:hover {
+  opacity: 0.85;
+}
+.nav-links li {
+  list-style: none;
+}
+.btn {
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.feature-card {
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+.step-card {
+  transition: all 0.3s ease;
+}
+.step-card:hover {
+  transform: translateY(-5px);
 }
