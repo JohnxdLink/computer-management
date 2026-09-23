@@ -1,16 +1,86 @@
-CREATE TABLE issue_reports (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    computer_id BIGINT UNSIGNED NOT NULL,
-    reported_by BIGINT UNSIGNED NOT NULL,
-    issue_description TEXT NOT NULL,
-    priority ENUM('Low', 'Medium', 'High') NOT NULL DEFAULT 'Medium',
-    status ENUM('Pending', 'In Progress', 'Resolved') NOT NULL DEFAULT 'Pending',
-    date_reported TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    resolved_date TIMESTAMP NULL,
+// CREATE
+const CREATE_ISSUE_REPORT = `
+  INSERT INTO issue_reports (
+    computer_id,
+    reported_by,
+    issue_description,
+    priority,
+    status,
+    resolved_date
+  )
+  VALUES (?, ?, ?, ?, ?, ?)
+`;
 
-    PRIMARY KEY (id),
+// READ - Get all issue reports
+const FIND_ALL_ISSUE_REPORTS = `
+  SELECT
+    ir.id,
+    ir.computer_id,
+    ir.reported_by,
+    ir.issue_description,
+    ir.priority,
+    ir.status,
+    ir.date_reported,
+    ir.resolved_date
+  FROM issue_reports AS ir
+  ORDER BY ir.id DESC
+`;
 
-    CONSTRAINT fk_issue_reports_computer FOREIGN KEY (computer_id) REFERENCES computers(id),
-    CONSTRAINT fk_issue_reports_staff FOREIGN KEY (reported_by)  REFERENCES staffs(id)
+// READ - Get issue report by ID
+const FIND_ISSUE_REPORT_BY_ID = `
+  SELECT
+    ir.id,
+    ir.computer_id,
+    ir.reported_by,
+    ir.issue_description,
+    ir.priority,
+    ir.status,
+    ir.date_reported,
+    ir.resolved_date
+  FROM issue_reports AS ir
+  WHERE ir.id = ?
+`;
 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+// READ - Get reports for one computer
+const FIND_ISSUE_REPORTS_BY_COMPUTER_ID = `
+  SELECT
+    ir.id,
+    ir.computer_id,
+    ir.reported_by,
+    ir.issue_description,
+    ir.priority,
+    ir.status,
+    ir.date_reported,
+    ir.resolved_date
+  FROM issue_reports AS ir
+  WHERE ir.computer_id = ?
+  ORDER BY ir.date_reported DESC
+`;
+
+// UPDATE
+const UPDATE_ISSUE_REPORT = `
+  UPDATE issue_reports AS ir
+  SET
+    ir.computer_id = ?,
+    ir.reported_by = ?,
+    ir.issue_description = ?,
+    ir.priority = ?,
+    ir.status = ?,
+    ir.resolved_date = ?
+  WHERE ir.id = ?
+`;
+
+// DELETE
+const DELETE_ISSUE_REPORT = `
+  DELETE FROM issue_reports
+  WHERE id = ?
+`;
+
+module.exports = {
+  CREATE_ISSUE_REPORT,
+  FIND_ALL_ISSUE_REPORTS,
+  FIND_ISSUE_REPORT_BY_ID,
+  FIND_ISSUE_REPORTS_BY_COMPUTER_ID,
+  UPDATE_ISSUE_REPORT,
+  DELETE_ISSUE_REPORT,
+};
