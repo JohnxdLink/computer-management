@@ -1,0 +1,71 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-12);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  white-space: nowrap;
+  border: var(--border-thin) solid transparent;
+  border-radius: var(--radius-full);
+  user-select: none;
+}
+
+.badge::before {
+  content: "";
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-full);
+  background-color: currentColor;
+}
+
+/* Computer statuses - mirrors the `computers.status` enum */
+.badge--operational {
+  color: var(--color-white);
+  background-color: var(--status-operational);
+}
+
+.badge--maintenance {
+  color: var(--color-warning);
+  background-color: var(--status-maintenance);
+}
+
+.badge--damaged {
+  color: var(--color-white);
+  background-color: var(--status-damaged);
+}
+
+.badge--replacement {
+  color: var(--color-warning);
+  background-color: var(--status-replacement);
+}
+
+/* Issue statuses - mirrors the `issue_reports.status` enum */
+.badge--pending {
+  color: var(--color-warning);
+  background-color: var(--color-primary);
+}
+
+.badge--in-progress {
+  color: var(--color-white);
+  background-color: var(--status-operational);
+}
+
+.badge--resolved {
+  color: var(--color-white);
+  background-color: var(--color-secondary);
+}
+
+/* Neutral / outline variant */
+.badge--muted {
+  color: var(--color-gray);
+  background-color: var(--color-accent);
+  border-color: var(--color-gray-30);
+}
+
+/* No dot, for plain labels such as a category */
+.badge--plain::before {
+  display: none;
+}

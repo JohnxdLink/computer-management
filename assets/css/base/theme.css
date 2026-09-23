@@ -13,6 +13,23 @@
   --color-gray: #6c757d;
   --color-light-gray: #c3c2c2;
 
+  /* Neutrals used by the input / table components */
+  --color-gray-20: #e5e7eb;
+  --color-gray-30: #d7dae0;
+
+  /* Validation states used by the input / label components */
+  --color-danger: #b42318;
+  --color-success: #067647;
+  --color-danger-50: #b4231880;
+  --color-success-50: #06764780;
+
+  /* Status colors for charts, badges and table pills.
+     Kept inside the brand palette: navy, primary yellow, grays. */
+  --status-operational: #1a5ba8;
+  --status-maintenance: var(--color-primary);
+  --status-damaged: var(--color-secondary);
+  --status-replacement: var(--color-light-gray);
+
   --color-primary-50: #f4b40080;
   --color-secondary-50: #173b6c80;
   --color-navy-50: #ffffff80;
