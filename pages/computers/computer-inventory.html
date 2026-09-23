@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer Inventory</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/pages/computer-inventory.css" />
+  </head>
+  <body class="w-100 d-flex flex-row h-screen">
+    <aside class="w-320 d-flex flex-column border-r border-light-gray gap-5">
+      <!-- Section logo -->
+      <section class="px-5 pt-5 w-100 d-flex flex-column items-center">
+        <div class="w-96 h-96">
+          <img class="w-100 h-100" src="../../assets/images/logo/britech-logo.png" alt="Britech logo" />
+        </div>
+        <h1>BRITECH LAB</h1>
+      </section>
+
+      <!-- Navbar -->
+      <nav class="px-5 d-flex flex-column gap-2">
+        <a class="btn-secondary btn-nav" href="../dashboard.html">DASHBOARD</a>
+        <a class="btn-secondary btn-nav btn-secondary__is-active" href="computer-inventory.html">COMPUTER</a>
+        <div class="ml-10 d-flex flex-column gap-2">
+          <a class="btn-secondary btn-nav btn-secondary__is-active" href="computer-inventory.html">Computers</a>
+          <a class="btn-secondary btn-nav" href="computer-specs.html">Specs</a>
+        </div>
+        <a class="btn-secondary btn-nav" href="../equipment.html">EQUIPMENT</a>
+        <a class="btn-secondary btn-nav" href="../maintenance.html">MAINTENANCE</a>
+        <a class="btn-secondary btn-nav" href="../issues.html">ISSUES</a>
+        <a class="btn-secondary btn-nav" href="../reports.html">REPORTS</a>
+        <a class="btn-secondary btn-nav" href="../accounts.html">ACCOUNTS</a>
+      </nav>
+    </aside>
+
+    <!-- Right Container -->
+    <div class="w-100 overflow-hidden">
+      <header class="header__h-10 inventory__header d-flex flex-row items-center justify-between">
+        <h2 class="inventory__page-title">Computer Inventory</h2>
+
+        <div class="inventory__user d-flex flex-row items-center gap-3">
+          <span class="inventory__avatar d-flex items-center justify-center">AD</span>
+          <span class="text-14 font-semibold text-warning">Administrator</span>
+          <i class="fa-solid fa-chevron-down text-12 text-gray"></i>
+        </div>
+      </header>
+
+      <main class="main-container__h-90 inventory__main d-flex flex-column gap-6">
+        <!-- Page intro -->
+        <section class="d-flex flex-column gap-2">
+          <h3 class="inventory__title">Computer Inventory</h3>
+          <p class="inventory__subtitle">Manage and monitor computer laboratory units.</p>
+        </section>
+
+        <!-- Toolbar: search + filters + add -->
+        <section class="inventory__card inventory__toolbar">
+          <div class="inventory__search">
+            <i class="fa-solid fa-magnifying-glass inventory__search-icon"></i>
+            <input
+              class="input inventory__field"
+              type="search"
+              id="searchInput"
+              placeholder="Search PC, Asset ID, Serial Number..."
+              aria-label="Search computers"
+            />
+          </div>
+
+          <select class="select inventory__field inventory__filter" id="statusFilter" aria-label="Filter by status">
+            <option value="">All Status</option>
+            <option value="Operational">Operational</option>
+            <option value="Under Maintenance">Under Maintenance</option>
+            <option value="Damaged">Damaged</option>
+            <option value="For Replacement">For Replacement</option>
+          </select>
+
+          <select class="select inventory__field inventory__filter" id="labFilter" aria-label="Filter by laboratory">
+            <option value="">All Laboratories</option>
+            <option value="Lab 1">Lab 1</option>
+            <option value="Lab 2">Lab 2</option>
+            <option value="Lab 3">Lab 3</option>
+          </select>
+
+          <select class="select inventory__field inventory__filter" id="categoryFilter" aria-label="Filter by category">
+            <option value="">All Categories</option>
+            <option value="Desktop">Desktop</option>
+            <option value="Laptop">Laptop</option>
+            <option value="All-in-One">All-in-One</option>
+          </select>
+
+          <button class="btn-primary" type="button" id="addComputerBtn">
+            <i class="fa-solid fa-plus"></i>
+            Add PC
+          </button>
+        </section>
+
+        <!-- Inventory table -->
+        <section class="inventory__card d-flex flex-column gap-5">
+          <div class="d-flex flex-row items-center justify-between gap-3">
+            <h4 class="inventory__card-title">Computer Inventory</h4>
+            <span class="inventory__result-count">25 computers</span>
+          </div>
+
+          <div class="inventory__table-wrapper">
+            <table class="table inventory__table">
+              <thead>
+                <tr>
+                  <th scope="col">Asset ID</th>
+                  <th scope="col">Computer Name</th>
+                  <th scope="col">Lab</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryBody">
+                <tr>
+                  <td class="inventory__asset-id">C-001</td>
+                  <td class="inventory__pc-name">PC-01</td>
+                  <td>Lab 1</td>
+                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
+                  <td><span class="badge badge--operational">Operational</span></td>
+                  <td>
+                    <a class="btn-tertiary" href="computer-specs.html?asset=C-001">
+                      <i class="fa-solid fa-eye"></i>
+                      View
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="inventory__asset-id">C-002</td>
+                  <td class="inventory__pc-name">PC-02</td>
+                  <td>Lab 1</td>
+                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
+                  <td><span class="badge badge--maintenance">Under Maintenance</span></td>
+                  <td>
+                    <a class="btn-tertiary" href="computer-specs.html?asset=C-002">
+                      <i class="fa-solid fa-eye"></i>
+                      View
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="inventory__asset-id">C-003</td>
+                  <td class="inventory__pc-name">PC-03</td>
+                  <td>Lab 1</td>
+                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
+                  <td><span class="badge badge--damaged">Damaged</span></td>
+                  <td>
+                    <a class="btn-tertiary" href="computer-specs.html?asset=C-003">
+                      <i class="fa-solid fa-eye"></i>
+                      View
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="inventory__asset-id">C-004</td>
+                  <td class="inventory__pc-name">PC-04</td>
+                  <td>Lab 1</td>
+                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
+                  <td><span class="badge badge--operational">Operational</span></td>
+                  <td>
+                    <a class="btn-tertiary" href="computer-specs.html?asset=C-004">
+                      <i class="fa-solid fa-eye"></i>
+                      View
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="inventory__asset-id">C-005</td>
+                  <td class="inventory__pc-name">PC-05</td>
+                  <td>Lab 1</td>
+                  <td><span class="badge badge--muted badge--plain">All-in-One</span></td>
+                  <td><span class="badge badge--operational">Operational</span></td>
+                  <td>
+                    <a class="btn-tertiary" href="computer-specs.html?asset=C-005">
+                      <i class="fa-solid fa-eye"></i>
+                      View
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="inventory__pagination">
+            <span class="inventory__result-count">Showing 1-5 of 25</span>
+
+            <div class="d-flex flex-row items-center gap-2">
+              <button class="inventory__page-btn" type="button" id="prevPage" aria-label="Previous page" disabled>
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
+              <div class="d-flex flex-row items-center gap-2" id="pageNumbers">
+                <button class="inventory__page-btn inventory__page-btn__is-active" type="button">1</button>
+                <button class="inventory__page-btn" type="button">2</button>
+                <button class="inventory__page-btn" type="button">3</button>
+                <button class="inventory__page-btn" type="button">4</button>
+                <button class="inventory__page-btn" type="button">5</button>
+              </div>
+
+              <button class="inventory__page-btn" type="button" id="nextPage" aria-label="Next page">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="../../assets/js/main.js"></script>
+  </body>
+</html>

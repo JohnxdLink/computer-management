@@ -1,3 +1,4 @@
+@import url("../component/badge/badge.css");
 @import url("../component/buttons/base.css");
 @import url("../layout/header.css");
 @import url("../layout/footer.css");
@@ -5,4 +6,336 @@
 
 .btn-nav {
   justify-content: start;
+}
+
+/* ----- Header ------------------------------------------------ */
+.dashboard__header {
+  padding: 0 var(--space-24);
+  background-color: var(--color-white);
+  border-bottom: var(--border-thin) solid var(--color-light-gray);
+}
+
+.dashboard__page-title {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+  color: var(--color-secondary);
+}
+
+.dashboard__user {
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+}
+
+.dashboard__avatar {
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ----- Main -------------------------------------------------- */
+.dashboard__main {
+  padding: var(--space-24);
+  background-color: var(--color-accent);
+}
+
+.dashboard__greeting {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-warning);
+}
+
+.dashboard__subtitle {
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-normal);
+  color: var(--color-gray);
+}
+
+.dashboard__section-title {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-gray);
+}
+
+/* ----- Card shell -------------------------------------------- */
+.dashboard__card {
+  padding: var(--space-20);
+  background-color: var(--color-white);
+  border: var(--border-thin) solid var(--color-light-gray);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.dashboard__card-title {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+}
+
+/* ----- Overview stat cards ----------------------------------- */
+.dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-16);
+}
+
+.dashboard__stat {
+  border-left: var(--border-thick) solid var(--color-secondary);
+  transition:
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.dashboard__stat:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.dashboard__stat--total {
+  border-left-color: var(--color-secondary);
+}
+.dashboard__stat--operational {
+  border-left-color: var(--status-operational);
+}
+.dashboard__stat--maintenance {
+  border-left-color: var(--status-maintenance);
+}
+.dashboard__stat--defective {
+  border-left-color: var(--color-gray);
+}
+
+.dashboard__stat-value {
+  font-size: var(--font-size-40);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-none);
+  color: var(--color-warning);
+}
+
+.dashboard__stat-label {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray);
+}
+
+.dashboard__stat-icon {
+  width: var(--space-48);
+  height: var(--space-48);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-16);
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+/* ----- Quick actions ----------------------------------------- */
+.dashboard__actions {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-12);
+}
+
+/* ----- Chart row --------------------------------------------- */
+.dashboard__charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-16);
+}
+
+/* Donut -------------------------------------------------------- */
+.dashboard__donut {
+  position: relative;
+  flex-shrink: 0;
+  width: 168px;
+  height: 168px;
+  border-radius: var(--radius-full);
+  /* One stop per status. 34 of 40 operational = 0.85turn, 4 = 0.10turn,
+     2 = 0.05turn. Recalculate the turns when the counts change. */
+  background: conic-gradient(
+    var(--status-operational) 0turn 0.85turn,
+    var(--status-maintenance) 0.85turn 0.95turn,
+    var(--status-damaged) 0.95turn 1turn
+  );
+}
+
+.dashboard__donut-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 104px;
+  height: 104px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+}
+
+.dashboard__donut-total {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-none);
+  color: var(--color-warning);
+}
+
+.dashboard__donut-caption {
+  font-size: var(--font-size-12);
+  color: var(--color-gray);
+}
+
+.dashboard__legend-dot {
+  flex-shrink: 0;
+  width: var(--space-12);
+  height: var(--space-12);
+  border-radius: var(--radius-full);
+}
+
+.dashboard__legend-dot--operational {
+  background-color: var(--status-operational);
+}
+.dashboard__legend-dot--maintenance {
+  background-color: var(--status-maintenance);
+}
+.dashboard__legend-dot--damaged {
+  background-color: var(--status-damaged);
+}
+.dashboard__legend-dot--replacement {
+  background-color: var(--status-replacement);
+}
+
+.dashboard__legend-label {
+  font-size: var(--font-size-14);
+  color: var(--color-warning);
+}
+
+.dashboard__legend-value {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warning);
+}
+
+/* Bar chart ---------------------------------------------------- */
+.dashboard__bars {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  align-items: end;
+  gap: var(--space-16);
+  height: 168px;
+  padding-top: var(--space-8);
+  border-bottom: var(--border-thin) solid var(--color-light-gray);
+}
+
+.dashboard__bar-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: var(--space-8);
+  height: 100%;
+}
+
+.dashboard__bar-fill {
+  width: 100%;
+  max-width: 56px;
+  min-height: var(--space-4);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  background-color: var(--color-secondary);
+  transition: height var(--transition-slow);
+}
+
+.dashboard__bar-track:hover .dashboard__bar-fill {
+  background-color: var(--color-primary);
+}
+
+.dashboard__bar-value {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warning);
+}
+
+.dashboard__bar-labels {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: var(--space-16);
+  padding-top: var(--space-8);
+}
+
+.dashboard__bar-label {
+  font-size: var(--font-size-12);
+  text-align: center;
+  color: var(--color-gray);
+}
+
+/* ----- Recent activities -------------------------------------- */
+.dashboard__activity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-4);
+  border-bottom: var(--border-thin) solid var(--color-accent);
+}
+
+.dashboard__activity:last-child {
+  border-bottom: none;
+}
+
+.dashboard__activity-time {
+  flex-shrink: 0;
+  width: 88px;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray);
+}
+
+.dashboard__activity-icon {
+  flex-shrink: 0;
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-12);
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.dashboard__activity-text {
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-normal);
+  color: var(--color-warning);
+}
+
+.dashboard__activity-text strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+}
+
+.dashboard__empty {
+  padding: var(--space-24);
+  font-size: var(--font-size-14);
+  text-align: center;
+  color: var(--color-gray);
+}
+
+/* ----- Responsive --------------------------------------------- */
+@media (max-width: 1200px) {
+  .dashboard__stats,
+  .dashboard__actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard__charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard__stats,
+  .dashboard__actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

@@ -19,11 +19,11 @@
 
       <!-- Navbar -->
       <nav class="px-5 d-flex flex-column gap-2">
-        <a class="btn-secondary btn-nav" href="dashboard.html">DASHBOARD</a>
-        <a class="btn-secondary btn-nav" href="computer-inventory.html">COMPUTER</a>
+        <a class="btn-secondary btn-nav btn-secondary__is-active" href="dashboard.html">DASHBOARD</a>
+        <a class="btn-secondary btn-nav" href="computers/computer-inventory.html">COMPUTER</a>
         <div class="ml-10 d-flex flex-column gap-2">
-          <a class="btn-secondary btn-nav" href="">Computers</a>
-          <a class="btn-secondary btn-nav" href="">Specs</a>
+          <a class="btn-secondary btn-nav" href="computers/computer-inventory.html">Computers</a>
+          <a class="btn-secondary btn-nav" href="computers/computer-specs.html">Specs</a>
         </div>
         <a class="btn-secondary btn-nav" href="equipment.html">EQUIPMENT</a>
         <a class="btn-secondary btn-nav" href="maintenance.html">MAINTENANCE</a>
@@ -39,13 +39,246 @@
     </aside>
 
     <!-- Right Container -->
-    <div class="w-100">
-      <header class="header__h-10"></header>
+    <div class="w-100 overflow-hidden">
+      <header class="header__h-10 dashboard__header d-flex flex-row items-center justify-between">
+        <h2 class="dashboard__page-title">Dashboard</h2>
 
-      <main class="main-container__h-90"></main>
+        <div class="dashboard__user d-flex flex-row items-center gap-3">
+          <span class="dashboard__avatar d-flex items-center justify-center">AD</span>
+          <span class="text-14 font-semibold text-warning">Administrator</span>
+          <i class="fa-solid fa-chevron-down text-12 text-gray"></i>
+        </div>
+      </header>
+
+      <main class="main-container__h-90 dashboard__main d-flex flex-column gap-6">
+        <!-- Greeting -->
+        <section class="d-flex flex-row items-center justify-between gap-4">
+          <div class="d-flex flex-column gap-2">
+            <h3 class="dashboard__greeting">Good afternoon, Administrator</h3>
+            <p class="dashboard__subtitle">Here&rsquo;s what&rsquo;s happening in the computer laboratory.</p>
+          </div>
+          <p class="dashboard__subtitle">September 22, 2026</p>
+        </section>
+
+        <!-- Overview -->
+        <section class="d-flex flex-column gap-3">
+          <h4 class="dashboard__section-title">Overview</h4>
+
+          <div class="dashboard__stats">
+            <article
+              class="dashboard__card dashboard__stat dashboard__stat--total d-flex flex-row items-center justify-between gap-3"
+            >
+              <div class="d-flex flex-column gap-3">
+                <span class="dashboard__stat-value">40</span>
+                <span class="dashboard__stat-label">Total PCs</span>
+              </div>
+              <span class="dashboard__stat-icon d-flex items-center justify-center">
+                <i class="fa-solid fa-desktop"></i>
+              </span>
+            </article>
+
+            <article
+              class="dashboard__card dashboard__stat dashboard__stat--operational d-flex flex-row items-center justify-between gap-3"
+            >
+              <div class="d-flex flex-column gap-3">
+                <span class="dashboard__stat-value">34</span>
+                <span class="dashboard__stat-label">Operational</span>
+              </div>
+              <span class="dashboard__stat-icon d-flex items-center justify-center">
+                <i class="fa-solid fa-circle-check"></i>
+              </span>
+            </article>
+
+            <article
+              class="dashboard__card dashboard__stat dashboard__stat--maintenance d-flex flex-row items-center justify-between gap-3"
+            >
+              <div class="d-flex flex-column gap-3">
+                <span class="dashboard__stat-value">4</span>
+                <span class="dashboard__stat-label">Under Maintenance</span>
+              </div>
+              <span class="dashboard__stat-icon d-flex items-center justify-center">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </span>
+            </article>
+
+            <article
+              class="dashboard__card dashboard__stat dashboard__stat--defective d-flex flex-row items-center justify-between gap-3"
+            >
+              <div class="d-flex flex-column gap-3">
+                <span class="dashboard__stat-value">2</span>
+                <span class="dashboard__stat-label">Defective</span>
+              </div>
+              <span class="dashboard__stat-icon d-flex items-center justify-center">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </span>
+            </article>
+          </div>
+        </section>
+
+        <!-- Quick actions -->
+        <section class="d-flex flex-column gap-3">
+          <h4 class="dashboard__section-title">Quick Actions</h4>
+
+          <div class="dashboard__actions">
+            <a class="btn-primary" href="computers/computer-inventory.html">
+              <i class="fa-solid fa-plus"></i>
+              Add Computer
+            </a>
+            <a class="btn-secondary" href="issues.html">
+              <i class="fa-solid fa-bug"></i>
+              Report Issue
+            </a>
+            <a class="btn-secondary" href="maintenance.html">
+              <i class="fa-solid fa-calendar-plus"></i>
+              Add Maintenance
+            </a>
+            <a class="btn-secondary" href="reports.html">
+              <i class="fa-solid fa-file-lines"></i>
+              Generate Report
+            </a>
+          </div>
+        </section>
+
+        <!-- Charts -->
+        <section class="dashboard__charts">
+          <!-- Computer status donut. The slice sizes live in dashboard.css -->
+          <article class="dashboard__card d-flex flex-column gap-5">
+            <h4 class="dashboard__card-title">Computer Status</h4>
+
+            <div class="d-flex flex-row items-center gap-6">
+              <div class="dashboard__donut">
+                <div class="dashboard__donut-hole d-flex flex-column items-center justify-center gap-2">
+                  <span class="dashboard__donut-total">40</span>
+                  <span class="dashboard__donut-caption">Total PCs</span>
+                </div>
+              </div>
+
+              <ul class="d-flex flex-column gap-4 flex-1">
+                <li class="d-flex flex-row items-center justify-between gap-3">
+                  <span class="d-flex flex-row items-center gap-3">
+                    <span class="dashboard__legend-dot dashboard__legend-dot--operational"></span>
+                    <span class="dashboard__legend-label">Operational</span>
+                  </span>
+                  <span class="dashboard__legend-value">34 &middot; 85%</span>
+                </li>
+                <li class="d-flex flex-row items-center justify-between gap-3">
+                  <span class="d-flex flex-row items-center gap-3">
+                    <span class="dashboard__legend-dot dashboard__legend-dot--maintenance"></span>
+                    <span class="dashboard__legend-label">Under Maintenance</span>
+                  </span>
+                  <span class="dashboard__legend-value">4 &middot; 10%</span>
+                </li>
+                <li class="d-flex flex-row items-center justify-between gap-3">
+                  <span class="d-flex flex-row items-center gap-3">
+                    <span class="dashboard__legend-dot dashboard__legend-dot--damaged"></span>
+                    <span class="dashboard__legend-label">Damaged</span>
+                  </span>
+                  <span class="dashboard__legend-value">2 &middot; 5%</span>
+                </li>
+                <li class="d-flex flex-row items-center justify-between gap-3">
+                  <span class="d-flex flex-row items-center gap-3">
+                    <span class="dashboard__legend-dot dashboard__legend-dot--replacement"></span>
+                    <span class="dashboard__legend-label">For Replacement</span>
+                  </span>
+                  <span class="dashboard__legend-value">0 &middot; 0%</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Maintenance overview. Bar height = count / highest count -->
+          <article class="dashboard__card d-flex flex-column gap-5">
+            <h4 class="dashboard__card-title">Maintenance Overview</h4>
+
+            <div class="d-flex flex-column">
+              <div class="dashboard__bars">
+                <div class="dashboard__bar-track" title="Preventive: 12">
+                  <span class="dashboard__bar-value">12</span>
+                  <span class="dashboard__bar-fill" style="height: 80%"></span>
+                </div>
+                <div class="dashboard__bar-track" title="Corrective: 7">
+                  <span class="dashboard__bar-value">7</span>
+                  <span class="dashboard__bar-fill" style="height: 47%"></span>
+                </div>
+                <div class="dashboard__bar-track" title="Repair: 9">
+                  <span class="dashboard__bar-value">9</span>
+                  <span class="dashboard__bar-fill" style="height: 60%"></span>
+                </div>
+                <div class="dashboard__bar-track" title="Upgrade: 3">
+                  <span class="dashboard__bar-value">3</span>
+                  <span class="dashboard__bar-fill" style="height: 20%"></span>
+                </div>
+              </div>
+
+              <div class="dashboard__bar-labels">
+                <span class="dashboard__bar-label">Preventive</span>
+                <span class="dashboard__bar-label">Corrective</span>
+                <span class="dashboard__bar-label">Repair</span>
+                <span class="dashboard__bar-label">Upgrade</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- Recent activities -->
+        <section class="d-flex flex-column gap-3">
+          <h4 class="dashboard__section-title">Recent Activities</h4>
+
+          <div class="dashboard__card">
+            <ul class="d-flex flex-column">
+              <li class="dashboard__activity">
+                <span class="dashboard__activity-time">10:42 AM</span>
+                <span class="dashboard__activity-icon d-flex items-center justify-center">
+                  <i class="fa-solid fa-screwdriver-wrench"></i>
+                </span>
+                <span class="dashboard__activity-text flex-1">
+                  <strong>PC-04</strong> changed to Under Maintenance
+                </span>
+                <span class="badge badge--maintenance">Under Maintenance</span>
+              </li>
+
+              <li class="dashboard__activity">
+                <span class="dashboard__activity-time">10:15 AM</span>
+                <span class="dashboard__activity-icon d-flex items-center justify-center">
+                  <i class="fa-solid fa-bug"></i>
+                </span>
+                <span class="dashboard__activity-text flex-1"> New issue reported for <strong>PC-12</strong> </span>
+                <span class="badge badge--pending">Pending</span>
+              </li>
+
+              <li class="dashboard__activity">
+                <span class="dashboard__activity-time">09:48 AM</span>
+                <span class="dashboard__activity-icon d-flex items-center justify-center">
+                  <i class="fa-solid fa-circle-check"></i>
+                </span>
+                <span class="dashboard__activity-text flex-1"> <strong>PC-05</strong> maintenance completed </span>
+                <span class="badge badge--operational">Operational</span>
+              </li>
+
+              <li class="dashboard__activity">
+                <span class="dashboard__activity-time">09:20 AM</span>
+                <span class="dashboard__activity-icon d-flex items-center justify-center">
+                  <i class="fa-solid fa-desktop"></i>
+                </span>
+                <span class="dashboard__activity-text flex-1"> <strong>PC-40</strong> added to the inventory </span>
+                <span class="badge badge--operational">Operational</span>
+              </li>
+
+              <li class="dashboard__activity">
+                <span class="dashboard__activity-time">08:55 AM</span>
+                <span class="dashboard__activity-icon d-flex items-center justify-center">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </span>
+                <span class="dashboard__activity-text flex-1"> <strong>PC-27</strong> marked For Replacement </span>
+                <span class="badge badge--replacement">For Replacement</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
     </div>
-  </body>
 
-  <script type="module" src="../assets/js/main.js"></script>
-  <script type="module" src="../assets/js/pages/dashboard.js"></script>
+    <script type="module" src="../assets/js/main.js"></script>
+    <script type="module" src="../assets/js/pages/dashboard.js"></script>
+  </body>
 </html>

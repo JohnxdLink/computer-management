@@ -1,0 +1,235 @@
+@import url("../component/badge/base.css");
+@import url("../component/buttons/base.css");
+@import url("../component/inputs/base.css");
+@import url("../component/tables/base.css");
+@import url("../layout/header.css");
+@import url("../layout/footer.css");
+@import url("../layout/main-container.css");
+
+.btn-nav {
+  justify-content: start;
+}
+
+/* ============================================================
+   COMPUTER INVENTORY
+   All colors / sizes come from base/theme.css.
+   ============================================================ */
+
+/* ----- Header ------------------------------------------------ */
+.inventory__header {
+  padding: 0 var(--space-24);
+  background-color: var(--color-white);
+  border-bottom: var(--border-thin) solid var(--color-light-gray);
+}
+
+.inventory__page-title {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-none);
+  color: var(--color-secondary);
+}
+
+.inventory__user {
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+}
+
+.inventory__avatar {
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ----- Main -------------------------------------------------- */
+.inventory__main {
+  padding: var(--space-24);
+  background-color: var(--color-accent);
+}
+
+.inventory__title {
+  font-size: var(--font-size-32);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-warning);
+}
+
+.inventory__subtitle {
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-normal);
+  color: var(--color-gray);
+}
+
+.inventory__card {
+  padding: var(--space-20);
+  background-color: var(--color-white);
+  border: var(--border-thin) solid var(--color-light-gray);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.inventory__card-title {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+}
+
+.inventory__result-count {
+  font-size: var(--font-size-14);
+  color: var(--color-gray);
+}
+
+/* ----- Toolbar ----------------------------------------------- */
+.inventory__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+/* .input and .select default to --color-dark (a pale yellow) for text,
+   which is unreadable on their light background - same override that
+   pages/login.css applies to its own fields. */
+.inventory__field {
+  color: var(--color-warning);
+  background-color: var(--color-white);
+}
+
+.inventory__search {
+  position: relative;
+  flex: 1 1 320px;
+  min-width: 240px;
+}
+
+.inventory__search .inventory__field {
+  padding-left: var(--space-40);
+}
+
+.inventory__search-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-16);
+  transform: translateY(-50%);
+  font-size: var(--font-size-14);
+  color: var(--color-gray);
+  pointer-events: none;
+}
+
+.inventory__filter {
+  flex: 0 1 180px;
+  min-width: 150px;
+}
+
+/* ----- Table ------------------------------------------------- */
+.inventory__table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: var(--border-thin) solid var(--color-gray-30);
+  border-radius: var(--radius-md);
+}
+
+/* .table sets its text to --color-dark (pale yellow) - same fix as above */
+.inventory__table {
+  color: var(--color-warning);
+}
+
+.inventory__table thead {
+  background-color: var(--color-accent);
+}
+
+.inventory__table th {
+  color: var(--color-secondary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: var(--font-size-12);
+}
+
+.inventory__table tbody tr:hover {
+  background-color: var(--color-accent);
+}
+
+/* .btn-tertiary is --color-dark (pale yellow) too - unreadable in a table cell */
+.inventory__table .btn-tertiary {
+  padding: var(--space-8) var(--space-12);
+  color: var(--color-secondary);
+}
+
+.inventory__asset-id {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.inventory__pc-name {
+  font-weight: var(--font-weight-semibold);
+}
+
+.inventory__empty {
+  padding: var(--space-32);
+  font-size: var(--font-size-14);
+  text-align: center;
+  color: var(--color-gray);
+}
+
+/* ----- Pagination -------------------------------------------- */
+.inventory__pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.inventory__page-btn {
+  min-width: var(--space-32);
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-none);
+  color: var(--color-secondary);
+  background-color: var(--color-white);
+  border: var(--border-thin) solid var(--color-gray-30);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.inventory__page-btn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-warning);
+}
+
+.inventory__page-btn:disabled {
+  color: var(--color-light-gray);
+  cursor: not-allowed;
+}
+
+.inventory__page-btn__is-active {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.inventory__page-btn__is-active:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+/* ----- Responsive --------------------------------------------- */
+@media (max-width: 900px) {
+  .inventory__search,
+  .inventory__filter {
+    flex: 1 1 100%;
+  }
+}
