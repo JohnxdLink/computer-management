@@ -47,13 +47,10 @@
 
       <main class="main-container__h-90 inventory__main d-flex flex-column gap-6">
         <!-- Page intro -->
-        <section class="d-flex flex-column gap-2">
-          <h3 class="inventory__title">Computer Inventory</h3>
-          <p class="inventory__subtitle">Manage and monitor computer laboratory units.</p>
-        </section>
+        <p class="inventory__subtitle">Manage and monitor computer laboratory units.</p>
 
         <!-- Toolbar: search + filters + add -->
-        <section class="inventory__card inventory__toolbar">
+        <section id="toolbar" class="d-flex inventory__card inventory__toolbar">
           <div class="inventory__search">
             <i class="fa-solid fa-magnifying-glass inventory__search-icon"></i>
             <input
@@ -89,101 +86,19 @@
 
           <button class="btn-primary" type="button" id="addComputerBtn">
             <i class="fa-solid fa-plus"></i>
-            Add PC
+            Add Computer
           </button>
         </section>
 
         <!-- Inventory table -->
-        <section class="inventory__card d-flex flex-column gap-5">
+        <section id="inventoryTable" class="d-none inventory__card flex-column gap-5">
           <div class="d-flex flex-row items-center justify-between gap-3">
             <h4 class="inventory__card-title">Computer Inventory</h4>
             <span class="inventory__result-count">25 computers</span>
           </div>
 
-          <div class="inventory__table-wrapper">
-            <table class="table inventory__table">
-              <thead>
-                <tr>
-                  <th scope="col">Asset ID</th>
-                  <th scope="col">Computer Name</th>
-                  <th scope="col">Lab</th>
-                  <th scope="col">Category</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="inventoryBody">
-                <tr>
-                  <td class="inventory__asset-id">C-001</td>
-                  <td class="inventory__pc-name">PC-01</td>
-                  <td>Lab 1</td>
-                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
-                  <td><span class="badge badge--operational">Operational</span></td>
-                  <td>
-                    <a class="btn-tertiary" href="computer-specs.html?asset=C-001">
-                      <i class="fa-solid fa-eye"></i>
-                      View
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="inventory__asset-id">C-002</td>
-                  <td class="inventory__pc-name">PC-02</td>
-                  <td>Lab 1</td>
-                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
-                  <td><span class="badge badge--maintenance">Under Maintenance</span></td>
-                  <td>
-                    <a class="btn-tertiary" href="computer-specs.html?asset=C-002">
-                      <i class="fa-solid fa-eye"></i>
-                      View
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="inventory__asset-id">C-003</td>
-                  <td class="inventory__pc-name">PC-03</td>
-                  <td>Lab 1</td>
-                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
-                  <td><span class="badge badge--damaged">Damaged</span></td>
-                  <td>
-                    <a class="btn-tertiary" href="computer-specs.html?asset=C-003">
-                      <i class="fa-solid fa-eye"></i>
-                      View
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="inventory__asset-id">C-004</td>
-                  <td class="inventory__pc-name">PC-04</td>
-                  <td>Lab 1</td>
-                  <td><span class="badge badge--muted badge--plain">Desktop</span></td>
-                  <td><span class="badge badge--operational">Operational</span></td>
-                  <td>
-                    <a class="btn-tertiary" href="computer-specs.html?asset=C-004">
-                      <i class="fa-solid fa-eye"></i>
-                      View
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="inventory__asset-id">C-005</td>
-                  <td class="inventory__pc-name">PC-05</td>
-                  <td>Lab 1</td>
-                  <td><span class="badge badge--muted badge--plain">All-in-One</span></td>
-                  <td><span class="badge badge--operational">Operational</span></td>
-                  <td>
-                    <a class="btn-tertiary" href="computer-specs.html?asset=C-005">
-                      <i class="fa-solid fa-eye"></i>
-                      View
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="">
+            <p class="text-gray">Coming Soon</p>
           </div>
 
           <!-- Pagination -->
@@ -209,9 +124,70 @@
             </div>
           </div>
         </section>
+
+        <form id="computerForm" class="d-flex flex-column" action="">
+          <div class="d-flex flex-row justify-between">
+            <h1>Add Computer</h1>
+
+            <button id="closeComputerBtn" class="btn-secondary">X</button>
+          </div>
+
+          <section class="mt-3 d-flex flex-row gap-3">
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">PC Number</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">Status</label>
+              <select class="select" name="" id="">
+                <option value="Operational">Operational</option>
+                <option value="Under Maintenance">Under Maintenance</option>
+                <option value="Damaged">Damaged</option>
+                <option value="For Replacement">For Replacement</option>
+              </select>
+            </div>
+          </section>
+
+          <section class="mt-3 d-flex flex-row gap-3">
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">RAM</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">Storage</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+          </section>
+
+          <section class="mt-3 d-flex flex-row gap-3">
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">Operating System</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">GPU</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+          </section>
+
+          <section class="mt-3 d-flex flex-row gap-3">
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">Motherboard</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+            <div class="d-flex flex-column flex-1">
+              <label class="label" for="">Processor</label>
+              <input class="input" type="text" name="" id="" />
+            </div>
+          </section>
+
+          <button class="mt-5 btn-secondary">Add Computer</button>
+        </form>
       </main>
     </div>
 
     <script type="module" src="../../assets/js/main.js"></script>
+    <script type="module" src="../../assets/js/pages/computer-inventory.js"></script>
   </body>
 </html>
