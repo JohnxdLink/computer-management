@@ -7,18 +7,10 @@ const {
   FIND_COMPUTER_SPEC_BY_COMPUTER_ID,
   UPDATE_COMPUTER_SPEC,
   DELETE_COMPUTER_SPEC,
-} = require("../database/queries/computer-specs-query.js");
+} = require("../database/queries/computer_specs-query.js");
 
 // CREATE
-const createComputerSpec = async (
-  computer_id,
-  processor,
-  ram,
-  storage,
-  operating_system,
-  gpu,
-  motherboard
-) => {
+const createComputerSpec = async (computer_id, processor, ram, storage, operating_system, gpu, motherboard) => {
   if (!computer_id) {
     throw new Error("Computer ID is required.");
   }
@@ -60,25 +52,13 @@ const findComputerSpecByComputerId = async (computer_id) => {
     throw new Error("Computer ID is required.");
   }
 
-  const [rows] = await db.query(
-    FIND_COMPUTER_SPEC_BY_COMPUTER_ID,
-    [computer_id]
-  );
+  const [rows] = await db.query(FIND_COMPUTER_SPEC_BY_COMPUTER_ID, [computer_id]);
 
   return rows[0] || null;
 };
 
 // UPDATE
-const updateComputerSpec = async (
-  id,
-  computer_id,
-  processor,
-  ram,
-  storage,
-  operating_system,
-  gpu,
-  motherboard
-) => {
+const updateComputerSpec = async (id, computer_id, processor, ram, storage, operating_system, gpu, motherboard) => {
   if (!id) {
     throw new Error("Computer specification ID is required.");
   }

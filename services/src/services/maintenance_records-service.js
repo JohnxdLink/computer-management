@@ -7,27 +7,12 @@ const {
   FIND_MAINTENANCE_RECORDS_BY_COMPUTER_ID,
   UPDATE_MAINTENANCE_RECORD,
   DELETE_MAINTENANCE_RECORD,
-} = require("../database/queries/maintenance-records-query.js");
+} = require("../database/queries/maintenance_records-query.js");
 
 // CREATE
-const createMaintenanceRecord = async (
-  computer_id,
-  performed_by,
-  maintenance_type,
-  description,
-  status,
-  remarks
-) => {
-  if (
-    !computer_id ||
-    !performed_by ||
-    !maintenance_type ||
-    !description ||
-    !status
-  ) {
-    throw new Error(
-      "Computer ID, performed by, maintenance type, description, and status are required."
-    );
+const createMaintenanceRecord = async (computer_id, performed_by, maintenance_type, description, status, remarks) => {
+  if (!computer_id || !performed_by || !maintenance_type || !description || !status) {
+    throw new Error("Computer ID, performed by, maintenance type, description, and status are required.");
   }
 
   const [result] = await db.query(CREATE_MAINTENANCE_RECORD, [
@@ -55,10 +40,7 @@ const findMaintenanceRecordById = async (id) => {
     throw new Error("Maintenance record ID is required.");
   }
 
-  const [rows] = await db.query(
-    FIND_MAINTENANCE_RECORD_BY_ID,
-    [id]
-  );
+  const [rows] = await db.query(FIND_MAINTENANCE_RECORD_BY_ID, [id]);
 
   return rows[0] || null;
 };
@@ -69,10 +51,7 @@ const findMaintenanceRecordsByComputerId = async (computer_id) => {
     throw new Error("Computer ID is required.");
   }
 
-  const [rows] = await db.query(
-    FIND_MAINTENANCE_RECORDS_BY_COMPUTER_ID,
-    [computer_id]
-  );
+  const [rows] = await db.query(FIND_MAINTENANCE_RECORDS_BY_COMPUTER_ID, [computer_id]);
 
   return rows;
 };
@@ -85,22 +64,14 @@ const updateMaintenanceRecord = async (
   maintenance_type,
   description,
   status,
-  remarks
+  remarks,
 ) => {
   if (!id) {
     throw new Error("Maintenance record ID is required.");
   }
 
-  if (
-    !computer_id ||
-    !performed_by ||
-    !maintenance_type ||
-    !description ||
-    !status
-  ) {
-    throw new Error(
-      "Computer ID, performed by, maintenance type, description, and status are required."
-    );
+  if (!computer_id || !performed_by || !maintenance_type || !description || !status) {
+    throw new Error("Computer ID, performed by, maintenance type, description, and status are required.");
   }
 
   const [result] = await db.query(UPDATE_MAINTENANCE_RECORD, [

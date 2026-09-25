@@ -8,31 +8,15 @@ const {
   FIND_STAFF_BY_EMAIL,
   UPDATE_STAFF,
   DELETE_STAFF,
-} = require("../database/queries/staffs-query.js");
+} = require("../database/queries/staff-query.js");
 
 // CREATE
-const createStaff = async (
-  account_id,
-  role_id,
-  lastname,
-  firstname,
-  contact_no,
-  email
-) => {
+const createStaff = async (account_id, role_id, lastname, firstname, contact_no, email) => {
   if (!account_id || !role_id || !lastname || !firstname) {
-    throw new Error(
-      "Account ID, role ID, last name, and first name are required."
-    );
+    throw new Error("Account ID, role ID, lastname, and firstname are required.");
   }
 
-  const [result] = await db.query(CREATE_STAFF, [
-    account_id,
-    role_id,
-    lastname,
-    firstname,
-    contact_no,
-    email,
-  ]);
+  const [result] = await db.query(CREATE_STAFF, [account_id, role_id, lastname, firstname, contact_no, email]);
 
   return result;
 };
@@ -61,9 +45,7 @@ const findStaffByAccountId = async (account_id) => {
     throw new Error("Account ID is required.");
   }
 
-  const [rows] = await db.query(FIND_STAFF_BY_ACCOUNT_ID, [
-    account_id,
-  ]);
+  const [rows] = await db.query(FIND_STAFF_BY_ACCOUNT_ID, [account_id]);
 
   return rows[0] || null;
 };
@@ -80,34 +62,16 @@ const findStaffByEmail = async (email) => {
 };
 
 // UPDATE
-const updateStaff = async (
-  id,
-  account_id,
-  role_id,
-  lastname,
-  firstname,
-  contact_no,
-  email
-) => {
+const updateStaff = async (id, account_id, role_id, lastname, firstname, contact_no, email) => {
   if (!id) {
     throw new Error("Staff ID is required.");
   }
 
   if (!account_id || !role_id || !lastname || !firstname) {
-    throw new Error(
-      "Account ID, role ID, last name, and first name are required."
-    );
+    throw new Error("Account ID, role ID, lastname, and firstname are required.");
   }
 
-  const [result] = await db.query(UPDATE_STAFF, [
-    account_id,
-    role_id,
-    lastname,
-    firstname,
-    contact_no,
-    email,
-    id,
-  ]);
+  const [result] = await db.query(UPDATE_STAFF, [account_id, role_id, lastname, firstname, contact_no, email, id]);
 
   return result;
 };
