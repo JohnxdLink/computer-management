@@ -54,10 +54,13 @@
         <!-- Greeting -->
         <section class="d-flex flex-row items-center justify-between gap-4">
           <div class="d-flex flex-column gap-2">
-            <h3 class="dashboard__greeting">Good afternoon, Administrator</h3>
+            <div class="d-flex flex-row gap-2">
+              <h3 id="greetings" class="dashboard__greeting"></h3>
+              <h3 class="dashboard__greeting">Administrator</h3>
+            </div>
             <p class="dashboard__subtitle">Here&rsquo;s what&rsquo;s happening in the computer laboratory.</p>
           </div>
-          <p class="dashboard__subtitle">September 22, 2026</p>
+          <p id="date" class="dashboard__subtitle"></p>
         </section>
 
         <!-- Overview -->
@@ -146,43 +149,7 @@
             <h4 class="dashboard__card-title">Computer Status</h4>
 
             <div class="d-flex flex-row items-center gap-6">
-              <div class="dashboard__donut">
-                <div class="dashboard__donut-hole d-flex flex-column items-center justify-center gap-2">
-                  <span class="dashboard__donut-total">40</span>
-                  <span class="dashboard__donut-caption">Total PCs</span>
-                </div>
-              </div>
-
-              <ul class="d-flex flex-column gap-4 flex-1">
-                <li class="d-flex flex-row items-center justify-between gap-3">
-                  <span class="d-flex flex-row items-center gap-3">
-                    <span class="dashboard__legend-dot dashboard__legend-dot--operational"></span>
-                    <span class="dashboard__legend-label">Operational</span>
-                  </span>
-                  <span class="dashboard__legend-value">34 &middot; 85%</span>
-                </li>
-                <li class="d-flex flex-row items-center justify-between gap-3">
-                  <span class="d-flex flex-row items-center gap-3">
-                    <span class="dashboard__legend-dot dashboard__legend-dot--maintenance"></span>
-                    <span class="dashboard__legend-label">Under Maintenance</span>
-                  </span>
-                  <span class="dashboard__legend-value">4 &middot; 10%</span>
-                </li>
-                <li class="d-flex flex-row items-center justify-between gap-3">
-                  <span class="d-flex flex-row items-center gap-3">
-                    <span class="dashboard__legend-dot dashboard__legend-dot--damaged"></span>
-                    <span class="dashboard__legend-label">Damaged</span>
-                  </span>
-                  <span class="dashboard__legend-value">2 &middot; 5%</span>
-                </li>
-                <li class="d-flex flex-row items-center justify-between gap-3">
-                  <span class="d-flex flex-row items-center gap-3">
-                    <span class="dashboard__legend-dot dashboard__legend-dot--replacement"></span>
-                    <span class="dashboard__legend-label">For Replacement</span>
-                  </span>
-                  <span class="dashboard__legend-value">0 &middot; 0%</span>
-                </li>
-              </ul>
+              <p class="text-gray">Coming Soon</p>
             </div>
           </article>
 
@@ -191,31 +158,7 @@
             <h4 class="dashboard__card-title">Maintenance Overview</h4>
 
             <div class="d-flex flex-column">
-              <div class="dashboard__bars">
-                <div class="dashboard__bar-track" title="Preventive: 12">
-                  <span class="dashboard__bar-value">12</span>
-                  <span class="dashboard__bar-fill" style="height: 80%"></span>
-                </div>
-                <div class="dashboard__bar-track" title="Corrective: 7">
-                  <span class="dashboard__bar-value">7</span>
-                  <span class="dashboard__bar-fill" style="height: 47%"></span>
-                </div>
-                <div class="dashboard__bar-track" title="Repair: 9">
-                  <span class="dashboard__bar-value">9</span>
-                  <span class="dashboard__bar-fill" style="height: 60%"></span>
-                </div>
-                <div class="dashboard__bar-track" title="Upgrade: 3">
-                  <span class="dashboard__bar-value">3</span>
-                  <span class="dashboard__bar-fill" style="height: 20%"></span>
-                </div>
-              </div>
-
-              <div class="dashboard__bar-labels">
-                <span class="dashboard__bar-label">Preventive</span>
-                <span class="dashboard__bar-label">Corrective</span>
-                <span class="dashboard__bar-label">Repair</span>
-                <span class="dashboard__bar-label">Upgrade</span>
-              </div>
+              <p class="text-gray">Coming Soon</p>
             </div>
           </article>
         </section>
@@ -225,54 +168,7 @@
           <h4 class="dashboard__section-title">Recent Activities</h4>
 
           <div class="dashboard__card">
-            <ul class="d-flex flex-column">
-              <li class="dashboard__activity">
-                <span class="dashboard__activity-time">10:42 AM</span>
-                <span class="dashboard__activity-icon d-flex items-center justify-center">
-                  <i class="fa-solid fa-screwdriver-wrench"></i>
-                </span>
-                <span class="dashboard__activity-text flex-1">
-                  <strong>PC-04</strong> changed to Under Maintenance
-                </span>
-                <span class="badge badge--maintenance">Under Maintenance</span>
-              </li>
-
-              <li class="dashboard__activity">
-                <span class="dashboard__activity-time">10:15 AM</span>
-                <span class="dashboard__activity-icon d-flex items-center justify-center">
-                  <i class="fa-solid fa-bug"></i>
-                </span>
-                <span class="dashboard__activity-text flex-1"> New issue reported for <strong>PC-12</strong> </span>
-                <span class="badge badge--pending">Pending</span>
-              </li>
-
-              <li class="dashboard__activity">
-                <span class="dashboard__activity-time">09:48 AM</span>
-                <span class="dashboard__activity-icon d-flex items-center justify-center">
-                  <i class="fa-solid fa-circle-check"></i>
-                </span>
-                <span class="dashboard__activity-text flex-1"> <strong>PC-05</strong> maintenance completed </span>
-                <span class="badge badge--operational">Operational</span>
-              </li>
-
-              <li class="dashboard__activity">
-                <span class="dashboard__activity-time">09:20 AM</span>
-                <span class="dashboard__activity-icon d-flex items-center justify-center">
-                  <i class="fa-solid fa-desktop"></i>
-                </span>
-                <span class="dashboard__activity-text flex-1"> <strong>PC-40</strong> added to the inventory </span>
-                <span class="badge badge--operational">Operational</span>
-              </li>
-
-              <li class="dashboard__activity">
-                <span class="dashboard__activity-time">08:55 AM</span>
-                <span class="dashboard__activity-icon d-flex items-center justify-center">
-                  <i class="fa-solid fa-triangle-exclamation"></i>
-                </span>
-                <span class="dashboard__activity-text flex-1"> <strong>PC-27</strong> marked For Replacement </span>
-                <span class="badge badge--replacement">For Replacement</span>
-              </li>
-            </ul>
+            <p class="text-gray">Coming Soon</p>
           </div>
         </section>
       </main>

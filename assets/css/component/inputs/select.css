@@ -6,7 +6,7 @@
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
-  color: var(--color-dark);
+  color: var(--color-secondary);
   background-color: var(--color-light);
   border: var(--border-thin) solid var(--color-gray-30);
   border-radius: var(--radius-md);
