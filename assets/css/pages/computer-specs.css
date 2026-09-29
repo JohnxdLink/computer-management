@@ -1,1 +1,18 @@
-@import url(../component/badge/base.css);
+@import url("../component/badge/base.css");
+@import url("../component/buttons/base.css");
+@import url("../component/inputs/base.css");
+@import url("../component/tables/base.css");
+@import url("../layout/header.css");
+@import url("../layout/footer.css");
+@import url("../layout/main-container.css");
+
+.btn-nav {
+  justify-content: start;
+}
+
+
+.specs__header{
+    padding:0 var(--space-24);
+    background-color: var(--color-white);
+    border-bottom: var(--border-thin) solid var(--color-light-gray);
+}
