@@ -4,4 +4,4 @@ const main = () => {
   initNavBar();
 };
 
-main();
+main()
